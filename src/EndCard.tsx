@@ -15,7 +15,15 @@ const Container = styled.div`
 	display: flex;
 	flex: 1;
 	flex-direction: row;
+	pconst Container = styled.div`
+	background-color: rgba(0, 0, 0, 0.04);
+	display: flex;
+	flex: 1;
+	flex-direction: row;
 	padding: 40px;
+`;
+
+const Left = styled.div`adding: 40px;
 `;
 
 const Left = styled.div`
