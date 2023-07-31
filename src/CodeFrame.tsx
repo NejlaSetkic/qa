@@ -13,7 +13,12 @@ const Pre = styled.pre<{
 	width: ${(props) => props.width}px;
 `;
 
-const Line = styled.div`
+const Line = styled.div`	text-align: left;
+	margin: 1em 0;
+	font-size: 40px;
+	width: ${(props) => props.width}px;
+`;
+
 	display: table-row;
 `;
 
