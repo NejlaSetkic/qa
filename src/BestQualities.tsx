@@ -9,7 +9,18 @@ import styled from 'styled-components';
 import {Feature} from './Qualities';
 import remotionLogo from './remotion-logo.png';
 
+const Contaimport {Feature} from './Qualities';
+import remotionLogo from './remotion-logo.png';
+
 const Container = styled(AbsoluteFill)`
+	background-color: white;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+`;
+
+const Left = styled.div``;
+iner = styled(AbsoluteFill)`
 	background-color: white;
 	flex-direction: row;
 	justify-content: center;
