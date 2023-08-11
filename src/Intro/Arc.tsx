@@ -4,6 +4,34 @@ export const Arc: React.FC<{
 	rotation: number;
 	delay: number;
 }> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
 	const frame = useCurrentFrame();
 	const {height, width, fps} = useVideoConfig();
 	const rx = 180;
