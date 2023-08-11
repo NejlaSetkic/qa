@@ -21,6 +21,36 @@ export const Triangle: React.FC<{
 					<stop stopColor="#42e9f5" stopOpacity={1} offset="0" />
 					<stop stopColor="#4290f5" stopOpacity={1} offset="100%" />
 				</linearGradient>
+	opacity: number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transform: `scale(${scale}) rotate(90deg)`}}
+			viewBox="-100 -100 400 400"
+		>
+			<defs>
+				<linearGradient id="gradient">
+					<stop stopColor="#42e9f5" stopOpacity={1} offset="0" />
+					<stop stopColor="#4290f5" stopOpacity={1} offset="100%" />
+				</linearGradient>
+	opacity: number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transform: `scale(${scale}) rotate(90deg)`}}
+			viewBox="-100 -100 400 400"
+		>
+			<defs>
+				<linearGradient id="gradient">
+					<stop stopColor="#42e9f5" stopOpacity={1} offset="0" />
+					<stop stopColor="#4290f5" stopOpacity={1} offset="100%" />
+				</linearGradient>
 			</defs>
 			<g stroke="url(#gradient)" strokeWidth="100" strokeLinejoin="round">
 				<path
