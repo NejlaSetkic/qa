@@ -10,7 +10,77 @@ export const Triangle: React.FC<{
 	scale: number;number;
 	scale: number;
 }> = ({size, opacity, scale}) => {
+	return (onst Container = styled.svg`
+	position: absolute;
+`;
+
+export const Triangle: React.FC<{
+	size: number;
+	opacity: number;
+	scale: number;number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
 	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transonst Container = styled.svg`
+	position: absolute;
+`;
+
+export const Triangle: React.FC<{
+	size: number;
+	opacity: number;
+	scale: number;number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transonst Container = styled.svg`
+	position: absolute;
+`;
+
+export const Triangle: React.FC<{
+	size: number;
+	opacity: number;
+	scale: number;number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transonst Container = styled.svg`
+	position: absolute;
+`;
+
+export const Triangle: React.FC<{
+	size: number;
+	opacity: number;
+	scale: number;number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, transonst Container = styled.svg`
+	position: absolute;
+`;
+
+export const Triangle: React.FC<{
+	size: number;
+	opacity: number;
+	scale: number;number;
+	scale: number;
+}> = ({size, opacity, scale}) => {
+	return (
+		<Container
+			width={size}
+			height={size}
+			style={{opacity, trans
 		<Container
 			width={size}
 			height={size}
