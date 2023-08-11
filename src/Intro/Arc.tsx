@@ -11,7 +11,73 @@ export const Arc: React.FC<{
 	const arcLength = Math.PI * 2 * Math.sqrt((rx * rx + ry * ry) / 2);
 
 	const progress = spring({
+		frame: frame - delay,rpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+
+export const Arc: React.FC<{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();
+	const {height, width, fps} = useVideoConfig();
+	const rx = 180;
+	const ry = 400;
+	const arcLength = Math.PI * 2 * Math.sqrt((rx * rx + ry * ry) / 2);
+
+	const progress = spring({
 		frame: frame - delay,
+		fps,
+		config: {
+			damping: 100,
+			mass: 10,
+		},
+	});
+
+	const opacity = interpolate(progress, [0, 0.2], [0, 0.7], {
+		extrapolateRight: 'clamp',rpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+
+export const Arc: React.FC<{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();
+	const {height, width, fps} = useVideoConfig();
+	const rx = 180;
+	const ry = 400;
+	const arcLength = Math.PI * 2 * Math.sqrt((rx * rx + ry * ry) / 2);
+
+	const progress = spring({
+		frame: frame - delay,
+		fps,
+		config: {
+			damping: 100,
+			mass: 10,
+		},
+	});
+
+	const opacity = interpolate(progress, [0, 0.2], [0, 0.7], {
+		extrapolateRight: 'clamp',rpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+
+export const Arc: React.FC<{
+	rotation: number;
+	delay: number;
+}> = ({delay, rotation}) => {
+	const frame = useCurrentFrame();
+	const {height, width, fps} = useVideoConfig();
+	const rx = 180;
+	const ry = 400;
+	const arcLength = Math.PI * 2 * Math.sqrt((rx * rx + ry * ry) / 2);
+
+	const progress = spring({
+		frame: frame - delay,
+		fps,
+		config: {
+			damping: 100,
+			mass: 10,
+		},
+	});
+
+	const opacity = interpolate(progress, [0, 0.2], [0, 0.7], {
+		extrapolateRight: 'clamp',
 		fps,
 		config: {
 			damping: 100,
