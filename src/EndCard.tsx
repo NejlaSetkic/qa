@@ -1,211 +1,251 @@
-import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import styled from 'styled-components';
-import {EndCardRepo} from './EndCardRepo';
-import {EndCardWebsite} from './EndCardWebsite';
-import {EndCardYarn} from './EndCardYarn';
-import {GlowingStroke} from './GlowingStroke';
+import {AbsoluteFill, Audio, Sequence, useCurrentFrame} from 'remotion';
+import {BestQualities} from './BestQualities';
+import {Blue} from './Blue';
+import {CodeFrame} from './CodeFrame';
+import {EndCard} from './EndCard';
+import {FadeTransition} from './FadeTransition';
+import {FastRefreshDemo} from './FastRefreshDemo';
+import {Fork} from './Fork';
+import {GoToGithub} from './GoToGithub';
+import {Howto} from './HowTo';
+import {InspectAndRefactor} from './InspectAndRefactor';
+import {Install} from './Install';
+import {Intro} from './Intro/Intro';
+import {JustWhite} from './JustWhite';
+import {Logo} from './Logo/Logo';
+import {Multithreaded} from './MultiThreaded';
+import {OpenSource} from './OpenSource';
+import {Pricing} from './Pricing';
+import {PullRequest} from './PullRequest';
+import {RemotionPlayerDemo} from './RemotionPlayerDemo';
+import {Ssr} from './SSRMultithreaded';
+import {TerminalRender} from './TerminalRender';
+import {Transition} from './Transition';
+import voiceover from './voiceover-no-music.mp3';
+import {Website} from './Website';
+import {WebTechnologies} from './WebTechnologies';
 
-const Outer = styled(AbsoluteFill)`
-	background-color: white;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-`;
-
-const Container = styled.div`
-	background-color: rgba(0, 0, 0, 0.04);
-	display: flex;
-	flex: 1;
-	flex-direction: row;
-	padding: 40px;
-`;
-
-const Left = styled.div`
-	flex: 1;
-	display: flex;
-`;
-
-export const BestQualities: React.FC = () => {
+export const Main: React.FC = () => {
 	const frame = useCurrentFrame();
-	const {fps} = useVideoConfig();
-
-	const logoProgress = spring({
-		frame: frame - 180,
-		fps,
-		config: {
-			damping: 200,
-		},
-	});
 
 	return (
-		<Container>
-			<Row>
-				<Left>
-					{programmingFeatures.map((f, index) => {
-						return (
-							<Feature
-								color1="#f5ad43"
-								color2="#fd764a"
-								title={index === 0}
-								x={500}
-								index={index + 40}
-								fadeOutIndex={index * 0.66}
-							>
-								{f}
-							</Feature>
-						);
-					})}
-				</Left>
-				<Spacer />
-				<Right>
-					{[
-						'Video editing\nfeatures',
-						'Visual Preview',
-						'Timeline Scrubbing',
-						'Video footage export',
-						'Animation primitives',
-						'Composition primitives',
-						'Layers',
-						'Dynamic FPS',
-						'Audio support (Alpha)',
-						'MP4 export',
-					].map((f, index) => {
-						return (
-							<Feature
-								color1="#5757f5"
-								color2="#00005b"
-								title={index === 0}
-								x={-500}
-								index={index + programmingFeatures.length + 80}
-								fadeOutIndex={index * 0.66}
-							>
-								{f}
-							</Feature>
-						);
-					})}
-				</Right>
-			</Row>
-			<AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-				<Img
-					src={remotionLogo}
-					style={{
-						height: 400,
-						width: 400,
-						transform: `scale(${logoProgress})`,
-					}}
-				/>
-			</AbsoluteFill>
-		</Container>
+		<div style={{flex: 1, backgroundColor: 'white'}}>
+			<div>
+				<Sequence from={0} durationInFrames={120 + 8}>
+					<Transition type="out">
+						<Intro showText offset={0} />
+					</Transition>
+				</Sequence>
+				<Sequence from={120} durationInFrames={60}>
+					<Transition type="in">
+						<GoToGithub />
+					</Transition>
+				</Sequence>
+				<Sequence from={180} durationInFrames={40}>
+					<Fork />
+				</Sequence>
+				<Sequence from={220} durationInFrames={78}>
+					<Transition type="out">
+						<InspectAndRefactor />
+					</Transition>
+				</Sequence>
+				<Sequence from={290} durationInFrames={60}>
+					<Transition type="in">
+						<PullRequest />
+					</Transition>
+				</Sequence>
+				<Sequence from={350} durationInFrames={90}>
+					<Intro showText offset={-40} />
+				</Sequence>
+				<Sequence from={440} durationInFrames={58}>
+					<Transition type="out">
+						<AbsoluteFill>
+							<Howto />
+						</AbsoluteFill>
+					</Transition>
+				</Sequence>
+				<Sequence from={490} durationInFrames={170}>
+					<Transition type="in">
+						<AbsoluteFill style={{overflow: 'hidden'}}>
+							<Logo showText offset={0} textStartOffset={0} />
+						</AbsoluteFill>
+					</Transition>
+				</Sequence>
+				<Sequence from={660} durationInFrames={190}>
+					<CodeFrame
+						width={1200}
+						title="Video.tsx"
+						code={`
+export const RemotionVideo = () => {
+	return (
+		<Composition
+			id="MyVideo"
+			component={MyVideo}
+			durationInFrames={90}
+			fps={30}
+			width={1920}
+			height={1080}
+		/>
 	);
+}
 
-const Right = styled.div`
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-`;
-
-const RADIUS = 30;
-
-const Panel = styled.div`
-	position: absolute;
-	background-color: white;
-	border-radius: ${RADIUS}px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.07);
-`;
-
-const Centered = styled(AbsoluteFill)`
-	justify-content: center;
-	align-items: center;
-`;
-
-export const EndCard: React.FC = () => {
-	const {fps, width, height} = useVideoConfig();
-
-	const PADDING = 40;
-	const SPACING = 30;
-	const PANEL_WIDTH = (width - PADDING * 2 - SPACING) / 2;
-	const BIG_PANEL_HEIGHT = height - PADDING * 2;
-	const SMALL_PANEL_HEIGHT = (height - PADDING * 2 - SPACING) / 2;
-	const frame = useCurrentFrame();
-	const progress = (i: number) =>
-		spring({
-			fps,
-			frame: frame - i * 10 - 15,
-			config: {
-				damping: 100,
-				mass: 2,
-			},
-		});
-
+					`.trim()}
+						timing={[
+							{
+								line: 5,
+								from: 50,
+							},
+							{
+								line: 6,
+								from: 75,
+							},
+							{
+								line: 7,
+								from: 110,
+							},
+							{
+								line: 8,
+								from: 115,
+							},
+						]}
+					/>
+				</Sequence>
+				<Sequence from={850} durationInFrames={240}>
+					<CodeFrame
+						width={1200}
+						title="MyVideo.tsx"
+						code={`
+export const MyVideo = () => {
+	const frame = useCurrentFrame() // ${frame}
+${'    '}
 	return (
-		<Outer>
-			<Container>
-				<Left>
-					<Panel
-						style={{
-							transform: `scale(${progress(0)})`,
-							height: BIG_PANEL_HEIGHT,
-							width: PANEL_WIDTH,
-						}}
-					>
-						<Centered style={{opacity: progress(1)}}>
-							<GlowingStroke
-								width={PANEL_WIDTH}
-								height={BIG_PANEL_HEIGHT}
-								radius={30}
-								color1="#4290f5"
-								color2="#42e9f5"
-								offset={15}
-							/>
-							<EndCardYarn />
-						</Centered>
-					</Panel>
-				</Left>
-				<div style={{width: 30}} />
-				<Right>
-					<Panel
-						style={{
-							transform: `scale(${progress(1)})`,
-							width: PANEL_WIDTH,
-							height: SMALL_PANEL_HEIGHT,
-						}}
-					>
-						<Centered style={{opacity: progress(2)}}>
-							<GlowingStroke
-								width={PANEL_WIDTH}
-								height={SMALL_PANEL_HEIGHT}
-								radius={30}
-								color1="#e01d67"
-								color2="#79367a"
-								offset={35}
-							/>
-							<EndCardWebsite />
-						</Centered>
-					</Panel>
-					<div style={{height: 30}} />
-					<Panel
-						style={{
-							transform: `scale(${progress(2)})`,
-							width: PANEL_WIDTH,
-							height: SMALL_PANEL_HEIGHT,
-							top: SMALL_PANEL_HEIGHT + SPACING + PADDING,
-						}}
-					>
-						<Centered style={{opacity: progress(3)}}>
-							<GlowingStroke
-								width={PANEL_WIDTH}
-								height={SMALL_PANEL_HEIGHT}
-								radius={30}
-								color1="#f5ad43"
-								color2="#fd764a"
-								offset={55}
-							/>
-							<EndCardRepo />
-						</Centered>
-					</Panel>
-				</Right>
-			</Container>
-		</Outer>
+		<div style={{
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center'
+		}}>
+			Frame number {frame} 🔥
+		</div>
+	)
+}
+
+									`.trim()}
+						timing={[
+							{
+								line: 1,
+								from: 50,
+							},
+							{
+								line: 3,
+								from: 170,
+							},
+							{
+								line: 4,
+								from: 170,
+							},
+							{
+								line: 5,
+								from: 170,
+							},
+							{
+								line: 6,
+								from: 170,
+							},
+							{
+								line: 7,
+								from: 170,
+							},
+							{
+								line: 8,
+								from: 170,
+							},
+							{
+								line: 9,
+								from: 170,
+							},
+							{
+								line: 10,
+								from: 170,
+							},
+							{
+								line: 11,
+								from: 170,
+							},
+						]}
+					/>
+				</Sequence>
+				<Sequence from={1090} durationInFrames={70}>
+					<WebTechnologies />
+				</Sequence>
+				<Sequence from={1160} durationInFrames={180}>
+					<RemotionPlayerDemo />
+				</Sequence>
+				<Sequence from={1340} durationInFrames={180}>
+					<FastRefreshDemo />
+				</Sequence>
+				<Sequence from={1520} durationInFrames={128}>
+					<Transition type="out">
+						<TerminalRender />
+					</Transition>
+				</Sequence>
+				<Sequence from={1640} durationInFrames={80 + 9}>
+					<Transition type="in">
+						<Transition type="out">
+							<Ssr />
+						</Transition>
+					</Transition>
+				</Sequence>
+				<Sequence from={1720} durationInFrames={120}>
+					<Transition type="in">
+						<FadeTransition type="out" duration={9}>
+							<Multithreaded />
+						</FadeTransition>
+					</Transition>
+				</Sequence>
+				<Sequence from={1840} durationInFrames={240}>
+					<BestQualities />
+				</Sequence>
+				<Sequence from={2080} durationInFrames={100}>
+					<FadeTransition type="out" duration={5}>
+						<FadeTransition type="in" duration={5}>
+							<OpenSource />
+						</FadeTransition>
+					</FadeTransition>
+				</Sequence>
+				<Sequence from={2180} durationInFrames={150}>
+					<Pricing />
+				</Sequence>
+				<Sequence from={2330 - 10} durationInFrames={100}>
+					<Transition type="in">
+						<Blue />
+					</Transition>
+				</Sequence>
+				<Sequence from={2330} durationInFrames={180 + 8}>
+					<Transition type="in">
+						<Transition type="out">
+							<Install />
+						</Transition>
+					</Transition>
+				</Sequence>
+				<Sequence from={2510} durationInFrames={138}>
+					<Transition type="in">
+						<Transition type="out">
+							<Website />
+						</Transition>
+					</Transition>
+				</Sequence>
+				<Sequence from={2640} durationInFrames={289}>
+					<Transition type="in">
+						<EndCard />
+					</Transition>
+				</Sequence>
+				<Sequence from={2920} durationInFrames={14}>
+					<Transition type="in">
+						<JustWhite />
+					</Transition>
+				</Sequence>
+				<Audio src={voiceover} />
+			</div>
+		</div>
 	);
 };
